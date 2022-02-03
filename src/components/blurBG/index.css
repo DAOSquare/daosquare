@@ -1,5 +1,5 @@
 .blur-bg {
-  position: absolute;
+  position: fixed;
   width: 33vw;
   height: 33vw;
   top: 227px;
