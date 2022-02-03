@@ -67,23 +67,23 @@ const chartData1 = [
 const data = [
   {
     icon: home,
-    title: 'Ethereum',
-    text: '$RICE',
+    title: '17,800+',
+    text: 'Members',
   },
   {
     icon: home,
-    title: 'GnosisChain',
-    text: '$RICE',
+    title: '13,100+',
+    text: 'Follower',
   },
   {
     icon: home,
-    title: 'GnosisChain',
-    text: '$RICE',
+    title: '100,90M+',
+    text: 'Treasury',
   },
   {
     icon: home,
-    title: 'GnosisChain',
-    text: '$RICE',
+    title: '1.3',
+    text: 'Token Price',
   },
 ];
 
