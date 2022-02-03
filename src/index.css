@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+a:focus {
+  box-shadow: none;
+}
+
+#root {
+  background-color: #e6ecff;
+  min-height: 100vh;
+}

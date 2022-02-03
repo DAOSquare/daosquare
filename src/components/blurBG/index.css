@@ -1,0 +1,32 @@
+.blur-bg {
+  position: absolute;
+  width: 33vw;
+  height: 33vw;
+  top: 227px;
+
+  opacity: 0.6;
+  filter: blur(60px);
+}
+.blur-bg.left {
+  left: 20%;
+  background: #ffd391;
+}
+.blur-bg.right {
+  right: 20%;
+  background: #ff96d5;
+}
+@media (min-width: 768px) {
+  .blur-bg {
+    filter: blur(80px);
+  }
+}
+@media (min-width: 960px) {
+  .blur-bg {
+    filter: blur(100px);
+  }
+}
+@media (min-width: 1200px) {
+  .blur-bg {
+    filter: blur(200px);
+  }
+}
