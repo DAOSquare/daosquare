@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Box, Image, Button, Center } from '@chakra-ui/react';
 import './index.css';
 
-function NFTCard({ image, title, text, info, energy, requirement, visa }) {
+function NFTCard({ bg, image, title, text, info, energy, requirement, visa }) {
   const [isHover, setIsHover] = useState(false);
 
   return (
@@ -20,9 +20,9 @@ function NFTCard({ image, title, text, info, energy, requirement, visa }) {
         setIsHover(false);
       }}
     >
-      <Box>
-        <Image src={image} w="100%" />
-      </Box>
+      <Center background={bg} height="360px">
+        <Image src={image} w={{ base: '100px', md: '120px' }} />
+      </Center>
       <Box p={6}>
         <Box fontSize="22px" fontWeight={900} color="#414152">
           {title}

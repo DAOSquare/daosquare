@@ -10,16 +10,17 @@ import {
 import IconCard from '../../components/iconCard';
 import NFTCard from '../../components/nftCard';
 
-import passport from '../../assets/images/passport.png';
-import guild from '../../assets/images/guild.png';
-import cafe from '../../assets/images/cafeteria.png';
-import matrix from '../../assets/images/matrix.png';
+import passport from '../../assets/images/passport.svg';
+import guild from '../../assets/images/guild.svg';
+import cafe from '../../assets/images/cafeteria.svg';
+import matrix from '../../assets/images/matrix.svg';
 import daosquare from '../../assets/images/daosquare.svg';
 import uniswap from '../../assets/images/uniswap.svg';
 import swapr from '../../assets/images/swapr.svg';
 
 const nftData = [
   {
+    bg: '#FBFF00',
     image: passport,
     title: 'PASSPORT',
     text: 'Basic membership',
@@ -38,6 +39,7 @@ const nftData = [
     visa: '1 month',
   },
   {
+    bg: '#83FFD7',
     image: guild,
     title: 'GUILD',
     text: 'Guild membership',
@@ -55,6 +57,7 @@ const nftData = [
     visa: '1 month',
   },
   {
+    bg: '#FF59BE',
     image: cafe,
     title: 'CAFETERIA',
     text: 'Cafeteria membership',
@@ -72,6 +75,7 @@ const nftData = [
     visa: '1 month',
   },
   {
+    bg: '#A096D1',
     image: matrix,
     title: 'MATRIX',
     text: 'Matrix membership',
