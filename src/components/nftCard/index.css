@@ -1,0 +1,11 @@
+.nft-card .title {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.nft-card .text {
+  font-size: 16px;
+  line-height: 22.4px;
+  text-align: left;
+}

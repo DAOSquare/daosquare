@@ -4,6 +4,9 @@ import { mode } from '@chakra-ui/theme-tools';
 import Button from './components/Button';
 
 const overrides = {
+  fonts: {
+    body: 'Montserrat',
+  },
   styles: {
     global: props => ({
       body: {

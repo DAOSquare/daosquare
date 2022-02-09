@@ -2,7 +2,14 @@ import { Box } from '@chakra-ui/react';
 
 function BaseCard({ children, ...props }) {
   return (
-    <Box bg="#fff" borderRadius="10px" px={5} py={7} {...props}>
+    <Box
+      bg="#fff"
+      borderRadius="10px"
+      px={5}
+      py={7}
+      overflow="hidden"
+      {...props}
+    >
       {children}
     </Box>
   );

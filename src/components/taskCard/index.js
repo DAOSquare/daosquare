@@ -3,25 +3,42 @@ import BaseCard from '../baseCard';
 
 function TaskCard({ icon, title, text, color, data }) {
   return (
-    <BaseCard p={12}>
+    <BaseCard p={{ base: 4, md: 8, lg: 12 }}>
       <Flex>
         <Image src={icon} width="60px" mr={4} />
         <Box>
           <Text fontSize="24px" fontWeight={900} color="#414152">
             {title}
           </Text>
-          <Text fontSize="16px" color="#717186" mt="-4px">
+          <Text fontSize="16px" color="#717186">
             {text}
           </Text>
         </Box>
       </Flex>
-      <Flex justifyContent="space-between" mt={10}>
-        {data.map(d => (
-          <Box borderRadius="12px" px={3} py={2} background={color} width="28%">
-            <Box fontSize="24px" fontWeight={900} color="#414152">
+      <Flex justifyContent="space-between" mt={{ base: 4, md: 6, lg: 10 }}>
+        {data.map((d, i) => (
+          <Box
+            key={i}
+            borderRadius="12px"
+            px={{ base: 2, md: 3 }}
+            py={2}
+            background={color}
+            width="28%"
+          >
+            <Box
+              fontSize={{ base: '14px', md: '16px', lg: '24px' }}
+              fontWeight={900}
+              color="#414152"
+            >
               {d.title}
             </Box>
-            <Box fontSize="14px" color="#9d9caf">
+            <Box
+              fontSize={{ base: '12px', lg: '14px' }}
+              color="#9d9caf"
+              height="22px"
+              lineHeight="22px"
+              overflow="hidden"
+            >
               {d.text}
             </Box>
           </Box>

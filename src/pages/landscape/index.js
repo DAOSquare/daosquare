@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Box, Container, Flex, Text, Image } from '@chakra-ui/react';
 import {
   AreaChart,
@@ -55,6 +56,40 @@ const chartData = [
   {
     name: 'Page G',
     uv: 70,
+  },
+];
+const chartData0 = [
+  {
+    name: 'Page A',
+    uv: 48,
+  },
+  {
+    name: 'Page B',
+    uv: 40,
+  },
+  {
+    name: 'Page C',
+    uv: 86,
+  },
+  {
+    name: 'Page D',
+    uv: 48,
+  },
+  {
+    name: 'Page E',
+    uv: 55,
+  },
+  {
+    name: 'Page F',
+    uv: 45,
+  },
+  {
+    name: 'Page G',
+    uv: 70,
+  },
+  {
+    name: 'Page H',
+    uv: 50,
   },
 ];
 
@@ -211,21 +246,40 @@ const portfolioData = [
 ];
 
 function Landscape() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Box>
-      <Container maxW="container.lg" mt={9} mb="120px" overflow="auto">
-        <Flex alignItems="center">
+      <Container
+        maxW="container.lg"
+        p={0}
+        mt={9}
+        mb={{ base: '40px', md: '80px', lg: '120px' }}
+        overflow="auto"
+      >
+        <Flex
+          flexDir={{ base: 'column', md: 'row' }}
+          alignItems="center"
+          className="article"
+        >
           <Box w="20%">
             <Image src={avatar} width="140px" />
           </Box>
           <Box w="80%">
-            <Box fontSize="48px">DAOSquare</Box>
-            <Box fontSize="20px" lineHeight="36px">
+            <Box
+              fontSize={{ base: '30px', md: '38px', lg: '48px' }}
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              DAOSquare
+            </Box>
+            <Text>
               Amet minim mollit non deserunt ullamco est sit aliqua dolor do
               amet sint. Velit officia consequat duis enim velit mollit.
               Exercitation veniam consequat sunt nostrud amet.
-            </Box>
-            <Flex mt={8}>
+            </Text>
+            <Flex justifyContent={{ base: 'center', md: 'left' }} mt={8}>
               <Image src={facebook} mr={10} />
               <Image src={twitter} mr={10} />
               <Image src={instgram} mr={10} />
@@ -236,15 +290,22 @@ function Landscape() {
       </Container>
 
       <Flex wrap="wrap" justifyContent="space-between" mb={8}>
-        {data.map(d => (
-          <Box w="23.5%">
+        {data.map((d, i) => (
+          <Box
+            key={i}
+            w={{ base: '100%', md: '49%', lg: '23.5%' }}
+            mb={{ base: 4, lg: 0 }}
+          >
             <IconCard {...d} />
           </Box>
         ))}
       </Flex>
 
       <Flex wrap="wrap" justifyContent="space-between" mb={16}>
-        <Box w="23.5%">
+        <Box
+          w={{ base: '100%', md: '49%', lg: '23.5%' }}
+          mb={{ base: 4, lg: 0 }}
+        >
           <TitleCard title="Market">
             <Box px={4} fontSize="24px" fontWeight={900}>
               2,000,000
@@ -254,7 +315,7 @@ function Landscape() {
                 <AreaChart
                   width={500}
                   height={400}
-                  data={chartData}
+                  data={chartData0}
                   margin={{
                     top: 0,
                     right: 0,
@@ -281,7 +342,10 @@ function Landscape() {
             </Box>
           </TitleCard>
         </Box>
-        <Box w="23.5%">
+        <Box
+          w={{ base: '100%', md: '49%', lg: '23.5%' }}
+          mb={{ base: 4, lg: 0 }}
+        >
           <TitleCard title="Stake">
             <Box px={4} fontSize="24px" fontWeight={900}>
               590,000
@@ -322,7 +386,10 @@ function Landscape() {
             </Box>
           </TitleCard>
         </Box>
-        <Box w="23.5%">
+        <Box
+          w={{ base: '100%', md: '49%', lg: '23.5%' }}
+          mb={{ base: 4, lg: 0 }}
+        >
           <TitleCard title="Holders">
             <Box w="100%" h="256px">
               <ResponsiveContainer width="100%" height="100%">
@@ -358,7 +425,10 @@ function Landscape() {
             </Box>
           </TitleCard>
         </Box>
-        <Box w="23.5%">
+        <Box
+          w={{ base: '100%', md: '49%', lg: '23.5%' }}
+          mb={{ base: 4, lg: 0 }}
+        >
           <TitleCard title="DKP">
             <Box p={4} h="256px">
               <Box fontSize="12px" color="#9d9caf" mt={1}>
@@ -385,8 +455,8 @@ function Landscape() {
       </Flex>
 
       <Flex wrap="wrap" justifyContent="space-between" mb={16}>
-        {taskData.map(d => (
-          <Box w="49%">
+        {taskData.map((d, i) => (
+          <Box key={i} w={{ base: '100%', lg: '49%' }} mb={{ base: 4, lg: 0 }}>
             <TaskCard {...d} />
           </Box>
         ))}
@@ -405,8 +475,8 @@ function Landscape() {
         Products
       </Text>
       <Flex wrap="wrap" justifyContent="space-between">
-        {productsData.map(d => (
-          <Box w="23.5%" mb={6}>
+        {productsData.map((d, i) => (
+          <Box key={i} w={{ base: '100%', md: '49%', lg: '23.5%' }} mb={6}>
             <IconCard {...d} />
           </Box>
         ))}
@@ -416,8 +486,8 @@ function Landscape() {
         Guilds
       </Text>
       <Flex wrap="wrap" justifyContent="space-between">
-        {guildsData.map(d => (
-          <Box w="23.5%" mb={6}>
+        {guildsData.map((d, i) => (
+          <Box key={i} w={{ base: '100%', md: '49%', lg: '23.5%' }} mb={6}>
             <IconCard {...d} />
           </Box>
         ))}
@@ -427,14 +497,14 @@ function Landscape() {
         Portfolio
       </Text>
       <Flex wrap="wrap" justifyContent="space-between">
-        {portfolioData.map(d => (
-          <Box w="23.5%" mb={6}>
+        {portfolioData.map((d, i) => (
+          <Box key={i} w={{ base: '100%', md: '49%', lg: '23.5%' }} mb={6}>
             <IconCard {...d} />
           </Box>
         ))}
       </Flex>
 
-      <Box h={20}></Box>
+      <Box h={{ base: 8, md: 16, lg: 32 }}></Box>
     </Box>
   );
 }

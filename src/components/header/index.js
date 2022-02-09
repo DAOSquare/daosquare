@@ -22,6 +22,10 @@ const menuData = [
     name: 'Join us',
     path: '/join',
   },
+  {
+    name: 'Incubator',
+    path: '/incubator',
+  },
 ];
 
 function Header() {
@@ -30,7 +34,16 @@ function Header() {
 
   return (
     <>
-      <Box h="120px">
+      <Box
+        h={{ base: '80px', md: '120px' }}
+        w="100%"
+        pos="fixed"
+        top={0}
+        left={0}
+        background="rgba(230, 235, 255, 0.2)"
+        backdropFilter="blur(10px)"
+        zIndex={999}
+      >
         <Container
           maxW="container.xl"
           h="100%"
@@ -38,22 +51,19 @@ function Header() {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Link to="/" display="inline">
-            <Image src={logo} />
+          <Link to="/">
+            <Image src={logo} w={{ base: '120px', md: '200px' }} />
           </Link>
 
-          <Box>
-            <Link to="/summon">Summon</Link>|
-            <Link to="/landscape">Landscape</Link>|<Link to="/join">Join</Link>
-          </Box>
-
           <Flex>
-            <Link to="/summon">
-              <Button mr={10}>Summon</Button>
-            </Link>
+            <Box display={{ base: 'none', md: 'block' }}>
+              <Link to="/summon">
+                <Button mr={10}>Summon</Button>
+              </Link>
+            </Box>
             <Image
               src={line}
-              w={7}
+              w={{ base: 5, md: 7 }}
               cursor="pointer"
               onClick={() => {
                 setIsShowMenu(!isShowMenu);
@@ -66,6 +76,7 @@ function Header() {
       <Box className="menu-cover" display={isShowMenu ? 'auto' : 'none'}>
         {menuData.map((d, i) => (
           <Box
+            key={i}
             className={curMenu === i ? 'menu-item active' : 'menu-item'}
             onMouseEnter={() => setCurMenu(i)}
             onMouseLeave={() => setCurMenu('')}

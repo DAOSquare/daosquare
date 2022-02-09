@@ -7,6 +7,7 @@ import Home from './pages/home';
 import Summon from './pages/summon';
 import Join from './pages/join';
 import Landscape from './pages/landscape';
+import Incubator from './pages/incubator';
 
 function App() {
   const location = useLocation();
@@ -18,15 +19,20 @@ function App() {
 
       <Container
         maxW={
-          location.pathname === '/landscape' ? 'container.xl' : 'container.md'
+          location.pathname === '/landscape' ||
+          location.pathname === '/incubator'
+            ? 'container.xl'
+            : 'container.md'
         }
         zIndex={2}
+        marginTop={{ base: '80px', md: '120px' }}
       >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="summon" element={<Summon />} />
           <Route path="landscape" element={<Landscape />} />
           <Route path="join" element={<Join />} />
+          <Route path="incubator" element={<Incubator />} />
           {/* <Route path="*" element={<NoMatch />} /> */}
         </Routes>
       </Container>

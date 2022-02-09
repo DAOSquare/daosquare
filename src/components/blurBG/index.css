@@ -1,31 +1,35 @@
 .blur-bg {
-  position: fixed;
-  width: 33vw;
-  height: 33vw;
-  top: 227px;
-
   opacity: 0.6;
-  filter: blur(60px);
+  position: fixed;
+
+  width: 400px;
+  height: 400px;
+  top: 160px;
+  filter: blur(120px);
 }
 .blur-bg.left {
-  left: 20%;
+  left: -140px;
   background: #ffd391;
 }
 .blur-bg.right {
-  right: 20%;
+  right: -140px;
   background: #ff96d5;
 }
 @media (min-width: 768px) {
   .blur-bg {
-    filter: blur(80px);
+    width: 33vw;
+    height: 33vw;
+    top: 232px;
+    filter: blur(140px);
+  }
+  .blur-bg.left {
+    left: 20%;
+  }
+  .blur-bg.right {
+    right: 20%;
   }
 }
-@media (min-width: 960px) {
-  .blur-bg {
-    filter: blur(100px);
-  }
-}
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .blur-bg {
     filter: blur(200px);
   }
