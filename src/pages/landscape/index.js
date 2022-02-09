@@ -9,6 +9,8 @@ import {
   Cell,
   Legend,
 } from 'recharts';
+import { Timeline } from 'react-twitter-widgets';
+import BaseCard from '../../components/baseCard';
 import IconCard from '../../components/iconCard';
 import TaskCard from '../../components/taskCard';
 import TitleCard from '../../components/titleCard';
@@ -463,10 +465,20 @@ function Landscape() {
       </Flex>
 
       <Flex wrap="wrap" justifyContent="space-between" mb={16}>
-        <Box w="49%">
-          <TitleCard title="news"></TitleCard>
+        <Box w={{ base: '100%', md: '49%' }} mb={6}>
+          <BaseCard p={0} h="440px">
+            <Timeline
+              dataSource={{
+                sourceType: 'profile',
+                screenName: 'DAOSquare',
+              }}
+              options={{
+                height: '440',
+              }}
+            />
+          </BaseCard>
         </Box>
-        <Box w="49.2%">
+        <Box w={{ base: '100%', md: '49%' }} mb={6}>
           <TitleCard title="December 2, 2021"></TitleCard>
         </Box>
       </Flex>

@@ -63,7 +63,7 @@ function Home() {
       <Box className="wrapper-sm" display={isMobile ? 'block' : 'none'} mt={5}>
         <Box position="relative">
           <Box className="title-big animated bounceInDown" maxW="280px">
-            YOUTH EXPLORE EWEB3
+            YOUTH EXPLORE WEB3
           </Box>
           <Box
             className="animated bounceInRight delay-1s"
