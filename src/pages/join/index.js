@@ -13,8 +13,8 @@ import NFTCard from '../../components/nftCard';
 
 import passport from '../../assets/images/passport.svg';
 import guild from '../../assets/images/guild.svg';
-import cafe from '../../assets/images/cafeteria.svg';
-import matrix from '../../assets/images/matrix.svg';
+import cafe from '../../assets/images/cafeteria1.svg';
+import matrix from '../../assets/images/matrix1.svg';
 import daosquare from '../../assets/images/daosquare.svg';
 import uniswap from '../../assets/images/uniswap.svg';
 import swapr from '../../assets/images/swapr.svg';
