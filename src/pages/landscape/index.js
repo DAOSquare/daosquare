@@ -146,7 +146,7 @@ let taskData = [
       },
       {
         title: '0',
-        text: 'Voting',
+        text: 'Execution',
       },
       {
         title: '0',
@@ -162,7 +162,7 @@ let taskData = [
       },
       {
         title: '0',
-        text: 'Grace',
+        text: 'Passed',
       },
     ],
   },
@@ -323,11 +323,11 @@ function Landscape() {
       .then(data => {
         let tasks = data.data.organization.tasks;
         setDeworkData({
-          BACKLOG: tasks.filter(d => d.status === 'BACKLOG').length,
+          Suggestion: tasks.filter(d => d.status === 'BACKLOG').length,
           'TO DO': tasks.filter(d => d.status === 'TODO').length,
           'In Progress': tasks.filter(d => d.status === 'IN_PROGRESS').length,
           'In Review': tasks.filter(d => d.status === 'IN_REVIEW').length,
-          DONE: tasks.filter(d => d.status === 'DONE').length,
+          Done: tasks.filter(d => d.status === 'DONE').length,
         });
       });
   }, []);
