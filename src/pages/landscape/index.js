@@ -114,6 +114,10 @@ let taskData = [
     data: [
       {
         title: '0',
+        text: 'Backlog',
+      },
+      {
+        title: '0',
         text: 'To Do',
       },
       {
@@ -123,6 +127,10 @@ let taskData = [
       {
         title: '0',
         text: 'In Review',
+      },
+      {
+        title: '0',
+        text: 'Done',
       },
     ],
   },
@@ -135,6 +143,18 @@ let taskData = [
       {
         title: '0',
         text: 'Unsponsored',
+      },
+      {
+        title: '0',
+        text: 'Voting',
+      },
+      {
+        title: '0',
+        text: 'Grace',
+      },
+      {
+        title: '0',
+        text: 'Process',
       },
       {
         title: '0',
@@ -301,26 +321,14 @@ function Landscape() {
     })
       .then(response => response.json())
       .then(data => {
-        let todo = 0;
-        let inProgress = 0;
-        let inReview = 0;
         let tasks = data.data.organization.tasks;
-        for (let i = 0; i < tasks.length; i++) {
-          let task = tasks[i];
-
-          if (task.status === 'TODO') {
-            todo++;
-          } else if (task.status === 'BACKLOG') {
-            inProgress++;
-          } else if (task.status === 'DONE') {
-            inReview++;
-          }
-          setDeworkData({
-            'TO DO': todo,
-            'In Progress': inProgress,
-            'In Review': inReview,
-          });
-        }
+        setDeworkData({
+          BACKLOG: tasks.filter(d => d.status === 'BACKLOG').length,
+          'TO DO': tasks.filter(d => d.status === 'TODO').length,
+          'In Progress': tasks.filter(d => d.status === 'IN_PROGRESS').length,
+          'In Review': tasks.filter(d => d.status === 'IN_REVIEW').length,
+          DONE: tasks.filter(d => d.status === 'DONE').length,
+        });
       });
   }, []);
 

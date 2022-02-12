@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Box, Text, Heading, Button, Center, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import circle from '../../assets/images/circle.png';
+import circle from '../../assets/images/circle.svg';
 
 function Summon() {
   useEffect(() => {

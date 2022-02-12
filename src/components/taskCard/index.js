@@ -17,7 +17,12 @@ function TaskCard({ icon, title, text, color, data, link }) {
           </Box>
         </Flex>
       </Link>
-      <Flex justifyContent="space-between" mt={{ base: 4, md: 6, lg: 10 }}>
+      <Flex
+        wrap="wrap"
+        justifyContent="left"
+        mt={{ base: 4, md: 6, lg: 10 }}
+        mb="-16px"
+      >
         {data.map((d, i) => (
           <Box
             key={i}
@@ -26,6 +31,8 @@ function TaskCard({ icon, title, text, color, data, link }) {
             py={2}
             background={color}
             width="28%"
+            mr={(i + 1) % 3 === 0 ? 0 : '8%'}
+            mb={4}
           >
             <Box
               fontSize={{ base: '14px', md: '16px', lg: '24px' }}

@@ -20,7 +20,7 @@ import vesting from '../../assets/images/vesting.svg';
 import saft from '../../assets/images/saft.svg';
 import whaledao from '../../assets/images/whaledao1.svg';
 import dkp from '../../assets/images/dkp1.svg';
-import circle from '../../assets/images/circle.png';
+import circle from '../../assets/images/circle.svg';
 
 const infoData = [
   {
