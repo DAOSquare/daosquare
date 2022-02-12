@@ -141,9 +141,9 @@ function Join() {
     const networkID = await window.ethereum.request({ method: 'net_version' });
     console.log(networkID);
     let riceAddress = '0xbd9908b0cdd50386f92efcc8e1d71766c2782df0';
-    if (networkID === 1) {
+    if (networkID === '1') {
       riceAddress = '0xbd9908b0cdd50386f92efcc8e1d71766c2782df0';
-    } else if (networkID === 100) {
+    } else if (networkID === '100') {
       riceAddress = '0x97Edc0e345FbBBd8460847Fcfa3bc2a13bF8641F';
     } else {
       alert('Please switch to ethereum or XDai network');
