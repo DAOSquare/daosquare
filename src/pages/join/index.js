@@ -124,6 +124,54 @@ function Join() {
     window.scrollTo(0, 0);
   }, []);
 
+  function addRiceToMetamask() {
+    initialize();
+  }
+
+  const initialize = async () => {
+    const MetaMaskClientCheck = () => {
+      //Now we check to see if MetaMask is installed
+      if (typeof window.ethereum !== 'undefined') {
+        console.log('MetaMask is installed!');
+      } else {
+        alert('MetaMask isnt installed!');
+      }
+    };
+    MetaMaskClientCheck();
+    const networkID = await window.ethereum.request({ method: 'net_version' });
+    console.log(networkID);
+    let riceAddress = '0xbd9908b0cdd50386f92efcc8e1d71766c2782df0';
+    if (networkID === 1) {
+      riceAddress = '0xbd9908b0cdd50386f92efcc8e1d71766c2782df0';
+    } else if (networkID === 100) {
+      riceAddress = '0x97Edc0e345FbBBd8460847Fcfa3bc2a13bF8641F';
+    } else {
+      alert('Please switch to ethereum or XDai network');
+      return;
+    }
+    window.ethereum
+      .request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: riceAddress,
+            symbol: 'RICE',
+            decimals: 18,
+            image: 'https://www.daosquare.io/mediakit/DAOSquareRICE-256.png',
+          },
+        },
+      })
+      .then(success => {
+        if (success) {
+          console.log('RICE successfully added to wallet!');
+        } else {
+          throw new Error('Something went wrong.');
+        }
+      })
+      .catch(console.error);
+  };
+
   return (
     <Box className="article">
       <Heading
@@ -226,9 +274,13 @@ function Join() {
             mr={{ base: 0, md: 6 }}
             mb={4}
           >
-            <Link href="#">
-              <IconCard {...d} className="click-card" />
-            </Link>
+            <IconCard
+              {...d}
+              className="click-card"
+              onClick={() => {
+                addRiceToMetamask();
+              }}
+            />
           </Box>
         ))}
       </Flex>
