@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Image, Button, Center } from '@chakra-ui/react';
+import { Box, Image, Button, Center, Link } from '@chakra-ui/react';
 import './index.css';
 
 function NFTCard({ bg, image, title, text, info, energy, requirement, visa }) {
@@ -38,12 +38,12 @@ function NFTCard({ bg, image, title, text, info, energy, requirement, visa }) {
         h={isHover ? '100%' : '0px'}
         bottom={0}
         left={0}
-        background="rgba(230, 235, 255, 0.6)"
-        backdropFilter="blur(22px)"
-        overflow="scroll"
+        background="rgba(230, 235, 255, 0.8)"
+        backdropFilter="blur(40px)"
+        overflow="hidden"
         transition="height .4s cubic-bezier(0, 1, 0.5, 1)"
       >
-        <Box px={10} py={8}>
+        <Box px={10} py={8} h="calc(100% - 102px)" overflow="scroll">
           <Box mb={8}>
             <Box as="h3" className="title">
               Info
@@ -87,11 +87,13 @@ function NFTCard({ bg, image, title, text, info, energy, requirement, visa }) {
             </Box>
             <Box className="text">{visa}</Box>
           </Box>
-
-          <Center>
-            <Button>Mint</Button>
-          </Center>
         </Box>
+
+        <Center pos="absolute" w="100%" h="102px" left={0} bottom={0}>
+          <Link href="https://dkp.land/" target="_blank">
+            <Button>Mint</Button>
+          </Link>
+        </Center>
       </Box>
     </Box>
   );

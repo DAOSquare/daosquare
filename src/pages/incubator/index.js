@@ -5,9 +5,9 @@ import {
   Text,
   Heading,
   Center,
-  useBreakpointValue,
+  Container,
+  Image,
 } from '@chakra-ui/react';
-import ForceDirectedGraph from '../../components/forceDirectedGraph';
 import BaseCard from '../../components/baseCard';
 import IconCard from '../../components/iconCard';
 import InfoCard from '../../components/infoCard';
@@ -15,10 +15,12 @@ import InfoCard from '../../components/infoCard';
 import nft4ever from '../../assets/images/nft4ever.svg';
 import incub1 from '../../assets/images/incub1.svg';
 import incub2 from '../../assets/images/incub2.svg';
-import daosquare from '../../assets/images/daosquare.svg';
 import venture from '../../assets/images/venture.svg';
 import vesting from '../../assets/images/vesting.svg';
 import saft from '../../assets/images/saft.svg';
+import whaledao from '../../assets/images/whaledao1.svg';
+import dkp from '../../assets/images/dkp1.svg';
+import circle from '../../assets/images/circle.png';
 
 const infoData = [
   {
@@ -58,12 +60,12 @@ const data = [
 ];
 const data1 = [
   {
-    icon: daosquare,
+    icon: whaledao,
     title: 'WhaleDAO',
-    text: 'Ecosystem Building',
+    text: 'Marketing',
   },
   {
-    icon: daosquare,
+    icon: dkp,
     title: 'DKP',
     text: 'Community Operation',
   },
@@ -75,22 +77,31 @@ function Incubator() {
   }, []);
 
   const [isHover, setIsHover] = useState(false);
-  const graphWidth = useBreakpointValue({
-    base: 300,
-    md: 440,
-    lg: 640,
-  });
+  // const graphWidth = useBreakpointValue({
+  //   base: 300,
+  //   md: 440,
+  //   lg: 640,
+  // });
 
   return (
     <Box>
-      <Center mt={{ base: 0, lg: 100 }} mb={{ base: 4, md: 6, lg: 10 }}>
-        <ForceDirectedGraph width={graphWidth} height={graphWidth} />
+      <Center
+        mt={{ base: 5, md: 10, lg: '60px' }}
+        mb={{ base: 4, md: 6, lg: 10 }}
+      >
+        <Image src={circle} />
       </Center>
 
-      <Text textAlign="center" mb={{ base: 10, md: 16, lg: '100px' }}>
+      <Container
+        maxW="container.md"
+        fontSize={{ base: '16px', md: '24px' }}
+        fontWeight={900}
+        textAlign="center"
+        mb={{ base: 10, md: 16, lg: '100px' }}
+      >
         Build a interaction network for DAOSquare community to benefits all
         participants
-      </Text>
+      </Container>
 
       <Flex wrap="wrap" justifyContent="space-between" mb={12}>
         {infoData.map((d, i) => (
@@ -107,7 +118,7 @@ function Incubator() {
         px={{ base: 6, md: '100px', lg: '280px' }}
         py={{ base: 10, md: '80px', lg: '160px' }}
         background="linear-gradient(107.76deg, rgba(255, 150, 213, 0.8) 0.7%, rgba(255, 211, 144, 0.8) 99.85%)"
-        backdropFilter="blur(13px)"
+        backdropFilter="blur(40px)"
       >
         <Heading
           fontSize={{ base: '30px', md: '38px', lg: '48px' }}
@@ -149,7 +160,7 @@ function Incubator() {
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
         >
-          <BaseCard position="relative" textAlign="center">
+          <BaseCard position="relative" textAlign="center" px={0}>
             <Box fontSize="22px" fontWeight={600} py="14px">
               Become a provider
             </Box>
@@ -159,8 +170,8 @@ function Incubator() {
               h={isHover ? '100%' : '0px'}
               bottom={0}
               left={0}
-              background="rgba(230, 235, 255, 0.5)"
-              backdropFilter="blur(13px)"
+              background="rgba(230, 235, 255, 0.9)"
+              backdropFilter="blur(40px)"
               transition="height .4s cubic-bezier(0, 1, 0.5, 1)"
             >
               <Box pt="44px">Coming soon</Box>

@@ -8,6 +8,7 @@ function BaseCard({ children, ...props }) {
       px={5}
       py={7}
       overflow="hidden"
+      background="rgb(255,255,255,.8)"
       {...props}
     >
       {children}

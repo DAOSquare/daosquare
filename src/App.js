@@ -8,6 +8,7 @@ import Summon from './pages/summon';
 import Join from './pages/join';
 import Landscape from './pages/landscape';
 import Incubator from './pages/incubator';
+import Guild from './pages/guild';
 
 function App() {
   const location = useLocation();
@@ -20,7 +21,8 @@ function App() {
       <Container
         maxW={
           location.pathname === '/landscape' ||
-          location.pathname === '/incubator'
+          location.pathname === '/incubator' ||
+          location.pathname === '/guild'
             ? 'container.xl'
             : 'container.md'
         }
@@ -33,12 +35,18 @@ function App() {
           <Route path="landscape" element={<Landscape />} />
           <Route path="join" element={<Join />} />
           <Route path="incubator" element={<Incubator />} />
+          <Route path="guild" element={<Guild />} />
           {/* <Route path="*" element={<NoMatch />} /> */}
         </Routes>
       </Container>
 
       <Footer
-        position={location.pathname === '/' ? 'absolute' : 'static'}
+        position={
+          (location.pathname === '/' && window.innerHeight > 880) ||
+          location.pathname === '/guild'
+            ? 'absolute'
+            : 'static'
+        }
         bottom={0}
         left={0}
         right={0}

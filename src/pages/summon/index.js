@@ -1,14 +1,11 @@
-import { useEffect, useRef } from 'react';
-import { Box, Text, Heading, Button } from '@chakra-ui/react';
+import { useEffect } from 'react';
+import { Box, Text, Heading, Button, Center, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import circle from '../../assets/images/circle.png';
 
 function Summon() {
-  const videoWrapper = useRef(null);
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    videoWrapper.current.style.height =
-      videoWrapper.current.offsetWidth * 0.56 + 'px';
   }, []);
 
   return (
@@ -22,37 +19,11 @@ function Summon() {
         Summon
       </Heading>
 
-      <Box
-        w="100%"
-        // height="300px"
-        borderRadius={6}
-        overflow="hidden"
-        mb={{ base: 8, md: 16 }}
-        ref={videoWrapper}
-      >
-        <iframe
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/Ek0SgwWmF9w"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </Box>
-
       <Text>
         If we can master our own lives; if we can enter a world where there is
         no harm and people respect and support each other for win-win; if we can
         do cool and great things with people who are interesting, talented and
         adventurous; if such a thing can be recorded in history.
-      </Text>
-      <Text>
-        As a designer, content should be the driving force behind many of your
-        decisions, whether you’re creating the content or someone else is. So if
-        you can understand how to write effective copy (and understand the
-        purpose that it serves), you’ll be able to better serve your clients and
-        ultimately create better designs.
       </Text>
       <Text>Undoubtedly that must be DAO.</Text>
       <Text>
@@ -102,16 +73,28 @@ function Summon() {
         If you are a service provider, feel free to join DAOSquare. Here you can
         help promising projects grow and reap the rewards.
       </Text>
-      <Text>Before you click on "Join us" please confirm the following:</Text>
-      <Text className="blockquote">
-        If you want to go fast, go alone. If you want to go far, go together.
+      <Text>
+        You will build the ecosystem of DAOSquare together, a decentralized
+        network of resources, coordination, and benefits.
       </Text>
+      <Center
+        mt={{ base: 5, md: 10, lg: '60px' }}
+        mb={{ base: 4, md: 6, lg: 10 }}
+      >
+        <Image src={circle} />
+      </Center>
 
-      <Text>Finally</Text>
-      <Text>If you want to be your true self, DAOSquare is summoning you!</Text>
+      <Text>
+        This is DAOSquare. Everyone are here to help everyone, to make possible
+        to those impossible before, to give voice to those who did not have a
+        say before, to make strength to those who unhappy before.
+      </Text>
+      <Text>Finally, don’t forget that.</Text>
+      <Text>Youth explore Web3, find friends in DAO.</Text>
+
       <Box textAlign="center" mt={{ base: 8, md: 16, lg: 32 }}>
         <Link to="/join">
-          <Button>Join us</Button>
+          <Button>Find friends</Button>
         </Link>
       </Box>
 

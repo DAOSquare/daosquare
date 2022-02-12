@@ -1,20 +1,22 @@
-import { Box, Flex, Text, Image } from '@chakra-ui/react';
+import { Box, Flex, Text, Image, Link } from '@chakra-ui/react';
 import BaseCard from '../baseCard';
 
-function TaskCard({ icon, title, text, color, data }) {
+function TaskCard({ icon, title, text, color, data, link }) {
   return (
     <BaseCard p={{ base: 4, md: 8, lg: 12 }}>
-      <Flex>
-        <Image src={icon} width="60px" mr={4} />
-        <Box>
-          <Text fontSize="24px" fontWeight={900} color="#414152">
-            {title}
-          </Text>
-          <Text fontSize="16px" color="#717186">
-            {text}
-          </Text>
-        </Box>
-      </Flex>
+      <Link href={link} target="_blank">
+        <Flex>
+          <Image src={icon} width="60px" mr={4} />
+          <Box>
+            <Text fontSize="24px" fontWeight={900} color="#414152">
+              {title}
+            </Text>
+            <Text fontSize="16px" color="#717186">
+              {text}
+            </Text>
+          </Box>
+        </Flex>
+      </Link>
       <Flex justifyContent="space-between" mt={{ base: 4, md: 6, lg: 10 }}>
         {data.map((d, i) => (
           <Box

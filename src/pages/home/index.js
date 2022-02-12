@@ -11,7 +11,7 @@ function Home() {
       <Box
         className="wrapper-lg"
         display={isMobile ? 'none' : 'block'}
-        pt="80px"
+        pt="100px"
         marginX="-8px"
       >
         <Box position="relative">
@@ -29,7 +29,7 @@ function Home() {
             textAlign="right"
           >
             We believe in Web3 because it allows us to become our true selves
-            that are the so-call "sovereign individuals”.
+            that are the so-call sovereign individuals.
           </Box>
         </Box>
 
@@ -59,7 +59,6 @@ function Home() {
           </Box>
         </Box>
       </Box>
-
       <Box className="wrapper-sm" display={isMobile ? 'block' : 'none'} mt={5}>
         <Box position="relative">
           <Box className="title-big animated bounceInDown" maxW="280px">
@@ -76,7 +75,7 @@ function Home() {
             textAlign="right"
           >
             We believe in Web3 because it allows us to become our true selves
-            that are the so-call "sovereign individuals”.
+            that are the so-call sovereign individuals.
           </Box>
         </Box>
         <Center>
@@ -100,7 +99,7 @@ function Home() {
             position="absolute"
             bottom="-80px"
             left={0}
-            width="46%"
+            width="40%"
           >
             We believe in DAO because it leads us to find those like-minded
             people and realise each other's dreams together.

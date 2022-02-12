@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Box, Flex, Container, Button, Image } from '@chakra-ui/react';
 import logo from '../../assets/images/logo.svg';
 import line from '../../assets/images/line.svg';
+import close from '../../assets/images/close.svg';
 import './index.css';
 
 const menuData = [
@@ -19,7 +20,7 @@ const menuData = [
     path: '/landscape',
   },
   {
-    name: 'Join us',
+    name: 'Find friends',
     path: '/join',
   },
   {
@@ -41,7 +42,7 @@ function Header() {
         top={0}
         left={0}
         background="rgba(230, 235, 255, 0.2)"
-        backdropFilter="blur(10px)"
+        backdropFilter="blur(40px)"
         zIndex={999}
       >
         <Container
@@ -74,6 +75,15 @@ function Header() {
       </Box>
 
       <Box className="menu-cover" display={isShowMenu ? 'auto' : 'none'}>
+        <Box
+          pos="absolute"
+          top={5}
+          right={5}
+          cursor="pointer"
+          onClick={() => setIsShowMenu(false)}
+        >
+          <Image src={close} />
+        </Box>
         {menuData.map((d, i) => (
           <Box
             key={i}

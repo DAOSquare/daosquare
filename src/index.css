@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-a:focus {
+#root a:focus {
   box-shadow: none;
 }
 
@@ -62,7 +62,7 @@ a:focus {
   position: relative;
   left: 10px;
 }
-.blockquote:before {
+/* .blockquote:before {
   position: absolute;
   color: #ffca9c;
   content: '\201C';
@@ -70,25 +70,40 @@ a:focus {
   font-size: 40px;
   left: -22px;
   top: -12px;
-}
+} */
 @media (min-width: 768px) {
   .blockquote {
     font-size: 20px;
   }
-  .blockquote:before {
+  /* .blockquote:before {
     font-size: 48px;
     left: -26px;
     top: -14px;
-  }
+  } */
 }
 @media (min-width: 992px) {
   .blockquote {
     font-size: 21px;
     left: 0;
   }
-  .blockquote:before {
+  /* .blockquote:before {
     font-size: 56px;
     left: -36px;
     top: -18px;
-  }
+  } */
+}
+
+#root .click-card {
+  cursor: pointer;
+  transition: box-shadow 0.5s;
+  background: rgb(255, 255, 255, 1);
+}
+.click-card:hover {
+  box-shadow: 0px 0px 20px rgb(0 0 0 / 25%);
+  transition: box-shadow 0.2s;
+}
+
+#calendar .color-calendar {
+  display: flex;
+  align-items: center;
 }

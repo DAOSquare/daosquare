@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { Box, Container, Flex, Text, Image } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
+import { Box, Container, Flex, Text, Image, Link } from '@chakra-ui/react';
 import {
   AreaChart,
   Area,
@@ -10,25 +10,40 @@ import {
   Legend,
 } from 'recharts';
 import { Timeline } from 'react-twitter-widgets';
+import Calendar from '../../components/calendar';
 import BaseCard from '../../components/baseCard';
 import IconCard from '../../components/iconCard';
 import TaskCard from '../../components/taskCard';
 import TitleCard from '../../components/titleCard';
+
+import incubator from '../../assets/images/incubator.svg';
+import dkp from '../../assets/images/dkp.svg';
+import daoscape from '../../assets/images/daoscape.svg';
+import nft4ever from '../../assets/images/nft4ever.svg';
+
+import dao2 from '../../assets/images/dao2.svg';
+import devil from '../../assets/images/devil.svg';
+import cafeteria from '../../assets/images/cafeteria.svg';
+import matrix from '../../assets/images/matrix.svg';
+import whaledao from '../../assets/images/whaledao.svg';
 
 import daohaus from '../../assets/images/daohaus.svg';
 import ceramic from '../../assets/images/ceramic.svg';
 import brightid from '../../assets/images/brightid.svg';
 import unlock from '../../assets/images/unlock.svg';
 import multis from '../../assets/images/multis.svg';
+import doingud from '../../assets/images/doingud.svg';
 import home from '../../assets/images/home.svg';
-import bistro from '../../assets/images/bistro.svg';
-import dework from '../../assets/images/dework.svg';
+import discord from '../../assets/images/discord1.svg';
+import discord2 from '../../assets/images/discord2.svg';
+import twitter2 from '../../assets/images/twitter2.svg';
+import daosquare from '../../assets/images/daosquare.svg';
+import daosquare2 from '../../assets/images/daosquare2.svg';
+import dework1 from '../../assets/images/dework1.svg';
+import dework from '../../assets/images/dework2.svg';
 import dao from '../../assets/images/dao.svg';
-import avatar from '../../assets/images/avatar.png';
-import facebook from '../../assets/images/facebook1.svg';
+import forum from '../../assets/images/forum1.svg';
 import twitter from '../../assets/images/twitter1.svg';
-import instgram from '../../assets/images/instgram1.svg';
-import github from '../../assets/images/github1.svg';
 
 const chartData = [
   {
@@ -60,88 +75,53 @@ const chartData = [
     uv: 70,
   },
 ];
-const chartData0 = [
-  {
-    name: 'Page A',
-    uv: 48,
-  },
-  {
-    name: 'Page B',
-    uv: 40,
-  },
-  {
-    name: 'Page C',
-    uv: 86,
-  },
-  {
-    name: 'Page D',
-    uv: 48,
-  },
-  {
-    name: 'Page E',
-    uv: 55,
-  },
-  {
-    name: 'Page F',
-    uv: 45,
-  },
-  {
-    name: 'Page G',
-    uv: 70,
-  },
-  {
-    name: 'Page H',
-    uv: 50,
-  },
-];
 
 const chartData1 = [
-  { name: 'ETH', value: 400 },
-  { name: 'GC', value: 300 },
-  { name: 'DKP', value: 300 },
+  { name: 'ETH', value: 1096 },
+  { name: 'GC', value: 815 },
 ];
 
 const data = [
   {
-    icon: home,
-    title: '17,800+',
+    icon: discord2,
+    title: '13,100+',
     text: 'Members',
   },
   {
-    icon: home,
-    title: '13,100+',
+    icon: twitter2,
+    title: '13,000+',
     text: 'Follower',
   },
   {
     icon: home,
-    title: '100,90M+',
+    title: '$84,624,068', // Math.floor(96167102 * 0.879968526705165),https://etherscan.io/token/0xbd9908b0cdd50386f92efcc8e1d71766c2782df0#balances https://gnosis-safe.io/app/eth:0xf383975B49d2130e3BA0Df9e10dE5FF2Dd7A215a/balances
     text: 'Treasury',
   },
   {
-    icon: home,
-    title: '1.3',
+    icon: daosquare2,
+    title: '$0.88',
     text: 'Token Price',
   },
 ];
 
-const taskData = [
+let taskData = [
   {
     icon: dework,
     title: 'Task',
     text: 'Tasks in Dework',
     color: 'rgba(255, 152, 211, 0.2)',
-
+    link: 'https://app.dework.xyz/o/daosquare-5T2WcpGDJ3m6cOiG5ItJeL',
     data: [
       {
-        title: '13,100',
+        title: '0',
         text: 'To Do',
       },
       {
-        title: '890',
+        title: '0',
         text: 'In Progress',
       },
       {
-        title: '33',
+        title: '0',
         text: 'In Review',
       },
     ],
@@ -153,15 +133,15 @@ const taskData = [
     color: 'rgba(255, 214, 107, 0.2)',
     data: [
       {
-        title: '9,608',
+        title: '0',
         text: 'Unsponsored',
       },
       {
-        title: '128',
+        title: '0',
         text: 'Voting',
       },
       {
-        title: '76',
+        title: '0',
         text: 'Grace',
       },
     ],
@@ -170,50 +150,52 @@ const taskData = [
 
 const productsData = [
   {
-    icon: home,
+    icon: incubator,
     title: 'Incubator',
-    text: 'Members',
+    text: 'Infrastructure',
   },
   {
-    icon: home,
+    icon: dkp,
     title: 'DKP',
-    text: 'Follower',
+    text: 'Community Operation',
+    link: 'https://www.dkp.land',
   },
   {
-    icon: home,
+    icon: daoscape,
     title: 'DAOscape',
     text: 'Treasury',
   },
   {
-    icon: home,
-    title: 'Bistro',
-    text: 'Token Price',
+    icon: nft4ever,
+    title: 'NFT4ever',
+    text: 'Equity Marketplace',
+    link: 'https://nft4ever.vercel.app',
   },
 ];
 
 const guildsData = [
   {
-    icon: bistro,
+    icon: dao2,
     title: 'dao2',
     text: 'Media',
   },
   {
-    icon: bistro,
+    icon: devil,
     title: 'DevilGuild',
     text: 'Developer',
   },
   {
-    icon: bistro,
+    icon: cafeteria,
     title: 'Cafeteria',
     text: 'Governance',
   },
   {
-    icon: bistro,
+    icon: matrix,
     title: 'Matrix',
     text: 'Development',
   },
   {
-    icon: bistro,
+    icon: whaledao,
     title: 'WhaleDAO',
     text: 'Marketing',
   },
@@ -224,32 +206,122 @@ const portfolioData = [
     icon: daohaus,
     title: 'DAOhause',
     text: 'Infrastructure',
+    link: 'https://daohaus.club',
   },
   {
     icon: ceramic,
     title: 'Ceramic',
     text: 'Infrastructure',
+    link: 'https://ceramic.network/',
   },
   {
     icon: brightid,
     title: 'BrightID',
     text: 'DID',
+    link: 'https://www.brightid.org/',
   },
   {
     icon: unlock,
     title: 'Unlock',
     text: 'Tools',
+    link: 'https://unlock-protocol.com/',
   },
   {
     icon: multis,
     title: 'Multis',
     text: 'Fund manager',
+    link: 'https://multis.co/',
+  },
+  {
+    icon: doingud,
+    title: 'DoinGud',
+    text: 'NFT',
+    link: 'https://doingud.com/',
   },
 ];
 
 function Landscape() {
+  const [price, setPrice] = useState(0.8);
+  console.log(price);
+
+  const [chartData0, setChartData0] = useState([]);
+  const [deworkData, setDeworkData] = useState({
+    'TO DO': 0,
+    'In Progress': 0,
+    'In Review': 0,
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    let timer = setInterval(() => {
+      let frame = document.querySelector('iframe');
+      if (frame && frame.contentDocument) {
+        clearInterval(timer);
+
+        const head = frame.contentDocument.getElementsByTagName('head')[0];
+        var style = document.createElement('style');
+        style.innerText =
+          'footer{display:none;}  .timeline-InformationCircle{display:none;}';
+        head.append(style);
+      }
+    }, 200);
+  }, []);
+
+  useEffect(() => {
+    fetch('max.json') //https://www.coingecko.com/price_charts/19084/usd/max.json
+      .then(res => res.json())
+      .then(res => {
+        let data = res.stats.reverse();
+        setPrice(data[0][1]);
+        let graphData = data
+          .slice(0, 7)
+          .map(d => ({ date: d[0], value: d[1] }));
+        setChartData0(graphData);
+      });
+
+    fetch('https://api.dework.xyz/graphql', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        query: `
+                  query DAOSquareDashboardQuery($organizationId:UUID!) {
+                    organization:getOrganization(id:$organizationId) {
+                      tasks {
+                        id
+                        status
+                      }
+                    }
+                  }
+              `,
+        variables: {
+          organizationId: 'c174e43f-1ac8-432a-954f-43647236f6ff',
+        },
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        let todo = 0;
+        let inProgress = 0;
+        let inReview = 0;
+        let tasks = data.data.organization.tasks;
+        for (let i = 0; i < tasks.length; i++) {
+          let task = tasks[i];
+
+          if (task.status === 'TODO') {
+            todo++;
+          } else if (task.status === 'BACKLOG') {
+            inProgress++;
+          } else if (task.status === 'DONE') {
+            inReview++;
+          }
+          setDeworkData({
+            'TO DO': todo,
+            'In Progress': inProgress,
+            'In Review': inReview,
+          });
+        }
+      });
   }, []);
 
   return (
@@ -267,7 +339,7 @@ function Landscape() {
           className="article"
         >
           <Box w="20%">
-            <Image src={avatar} width="140px" />
+            <Image src={daosquare} width="140px" />
           </Box>
           <Box w="80%">
             <Box
@@ -277,15 +349,39 @@ function Landscape() {
               DAOSquare
             </Box>
             <Text>
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint. Velit officia consequat duis enim velit mollit.
-              Exercitation veniam consequat sunt nostrud amet.
+              Born in MetaCartel, DAOSquare is an incubator for web3. It’s based
+              on the concept of Web3 and runs on the Ethereum. It links resource
+              via the thought of DAO to support any valuable innovations of this
+              new era.
             </Text>
             <Flex justifyContent={{ base: 'center', md: 'left' }} mt={8}>
-              <Image src={facebook} mr={10} />
-              <Image src={twitter} mr={10} />
-              <Image src={instgram} mr={10} />
-              <Image src={github} />
+              <Link
+                href="https://discord.com/invite/daosquare"
+                isExternal
+                mx={4}
+                w={5}
+              >
+                <Image src={discord} w={5} />
+              </Link>
+              <Link
+                href="https://twitter.com/DAOSquare"
+                isExternal
+                mx={4}
+                w={5}
+              >
+                <Image src={twitter} w={5} />
+              </Link>
+              <Link
+                href="https://app.dework.xyz/o/daosquare-5T2WcpGDJ3m6cOiG5ItJeL"
+                isExternal
+                mx={4}
+                w={5}
+              >
+                <Image src={dework1} w={4} />
+              </Link>
+              <Link href="https://forum.daosquare.io/" isExternal mx={4} w={5}>
+                <Image src={forum} w="18px" />
+              </Link>
             </Flex>
           </Box>
         </Flex>
@@ -308,9 +404,17 @@ function Landscape() {
           w={{ base: '100%', md: '49%', lg: '23.5%' }}
           mb={{ base: 4, lg: 0 }}
         >
-          <TitleCard title="Market">
-            <Box px={4} fontSize="24px" fontWeight={900}>
-              2,000,000
+          <TitleCard title="Market Cap">
+            <Box
+              px={4}
+              fontSize="24px"
+              fontWeight={900}
+              height="36px"
+              lineHeight="36px"
+              overflow="hidden"
+            >
+              {/* {100000000 * price} */}
+              $87,996,853.64
             </Box>
             <Box w="100%" h="220px">
               <ResponsiveContainer width="100%" height="100%">
@@ -319,7 +423,7 @@ function Landscape() {
                   height={400}
                   data={chartData0}
                   margin={{
-                    top: 0,
+                    top: 10,
                     right: 0,
                     left: 0,
                     bottom: 0,
@@ -333,7 +437,7 @@ function Landscape() {
                   </defs>
                   <Area
                     type="monotone"
-                    dataKey="uv"
+                    dataKey="value"
                     stroke="#FFD66B"
                     strokeWidth="3px"
                     filter="drop-shadow(0px 3px 5px rgba(32, 5, 5, 0.1))"
@@ -349,8 +453,16 @@ function Landscape() {
           mb={{ base: 4, lg: 0 }}
         >
           <TitleCard title="Stake">
-            <Box px={4} fontSize="24px" fontWeight={900}>
-              590,000
+            <Box
+              px={4}
+              fontSize="24px"
+              fontWeight={900}
+              height="36px"
+              lineHeight="36px"
+              overflow="hidden"
+            >
+              {/* ${170287.64912153248 * price} dkp2 池子数量 */}
+              $149,847.77
             </Box>
             <Box w="100%" h="220px">
               <ResponsiveContainer width="100%" height="100%">
@@ -411,8 +523,8 @@ function Landscape() {
                           index === 0
                             ? '#AE8FF7'
                             : index === 1
-                            ? '#FFD66B'
-                            : '#FF96D5'
+                            ? '#FF96D5'
+                            : 'grey'
                         }
                       />
                     ))}
@@ -437,19 +549,19 @@ function Landscape() {
                 DKP1
               </Box>
               <Box fontSize="24px" fontWeight={900} color="#4C4B63" mb={5}>
-                D1,648,023,199
+                5,400.17
               </Box>
               <Box fontSize="12px" color="#9d9caf">
                 DKP2
               </Box>
               <Box fontSize="24px" fontWeight={900} color="#4C4B63" mb={5}>
-                623,963
+                17,121.92
               </Box>
               <Box fontSize="12px" color="#9d9caf">
                 DKP3
               </Box>
               <Box fontSize="24px" fontWeight={900} color="#4C4B63">
-                3,838
+                1,752
               </Box>
             </Box>
           </TitleCard>
@@ -459,14 +571,25 @@ function Landscape() {
       <Flex wrap="wrap" justifyContent="space-between" mb={16}>
         {taskData.map((d, i) => (
           <Box key={i} w={{ base: '100%', lg: '49%' }} mb={{ base: 4, lg: 0 }}>
-            <TaskCard {...d} />
+            <TaskCard
+              {...d}
+              className="click-card"
+              data={
+                i === 0
+                  ? Object.keys(deworkData).map(k => ({
+                      title: deworkData[k],
+                      text: k,
+                    }))
+                  : d.data
+              }
+            />
           </Box>
         ))}
       </Flex>
 
       <Flex wrap="wrap" justifyContent="space-between" mb={16}>
         <Box w={{ base: '100%', md: '49%' }} mb={6}>
-          <BaseCard p={0} h="440px">
+          <BaseCard p={0} h="456px" className="click-card">
             <Timeline
               dataSource={{
                 sourceType: 'profile',
@@ -479,7 +602,9 @@ function Landscape() {
           </BaseCard>
         </Box>
         <Box w={{ base: '100%', md: '49%' }} mb={6}>
-          <TitleCard title="December 2, 2021"></TitleCard>
+          <BaseCard p={0} h="456px" background="#FF98D3">
+            <Calendar />
+          </BaseCard>
         </Box>
       </Flex>
 
@@ -489,7 +614,13 @@ function Landscape() {
       <Flex wrap="wrap" justifyContent="space-between">
         {productsData.map((d, i) => (
           <Box key={i} w={{ base: '100%', md: '49%', lg: '23.5%' }} mb={6}>
-            <IconCard {...d} />
+            {d.link ? (
+              <Link href={d.link} target="blank">
+                <IconCard {...d} className="click-card" />
+              </Link>
+            ) : (
+              <IconCard {...d} />
+            )}
           </Box>
         ))}
       </Flex>
@@ -500,7 +631,9 @@ function Landscape() {
       <Flex wrap="wrap" justifyContent="space-between">
         {guildsData.map((d, i) => (
           <Box key={i} w={{ base: '100%', md: '49%', lg: '23.5%' }} mb={6}>
-            <IconCard {...d} />
+            <Link href={`/guild#${d.title}`}>
+              <IconCard {...d} className="click-card" />
+            </Link>
           </Box>
         ))}
       </Flex>
@@ -511,9 +644,17 @@ function Landscape() {
       <Flex wrap="wrap" justifyContent="space-between">
         {portfolioData.map((d, i) => (
           <Box key={i} w={{ base: '100%', md: '49%', lg: '23.5%' }} mb={6}>
-            <IconCard {...d} />
+            <Link href={d.link} target="_blank">
+              <IconCard {...d} className="click-card" />
+            </Link>
           </Box>
         ))}
+        <Box w={{ base: '100%', md: '49%', lg: '23.5%' }} mb={6}>
+          <BaseCard visibility="hidden" />
+        </Box>
+        <Box w={{ base: '100%', md: '49%', lg: '23.5%' }} mb={6}>
+          <BaseCard visibility="hidden" />
+        </Box>
       </Flex>
 
       <Box h={{ base: 8, md: 16, lg: 32 }}></Box>

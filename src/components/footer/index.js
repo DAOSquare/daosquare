@@ -1,8 +1,8 @@
 import { Flex, Image, Link } from '@chakra-ui/react';
 import discord from '../../assets/images/discord.svg';
 import twitter from '../../assets/images/twitter.svg';
-import github from '../../assets/images/github.svg';
-import dework from '../../assets/images/dework1.svg';
+import dework from '../../assets/images/dework.svg';
+import forum from '../../assets/images/forum.svg';
 
 function Footer(props) {
   return (
@@ -27,8 +27,8 @@ function Footer(props) {
       >
         <Image src={dework} w={4} />
       </Link>
-      <Link href="https://github.com/DAOSquare" isExternal mx={4} w={5}>
-        <Image src={github} w={5} />
+      <Link href="https://forum.daosquare.io/" isExternal mx={4} w={5}>
+        <Image src={forum} w="18px" />
       </Link>
     </Flex>
   );

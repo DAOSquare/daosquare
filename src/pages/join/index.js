@@ -6,6 +6,7 @@ import {
   Heading,
   ListItem,
   UnorderedList,
+  Link,
 } from '@chakra-ui/react';
 import IconCard from '../../components/iconCard';
 import NFTCard from '../../components/nftCard';
@@ -108,11 +109,13 @@ const data1 = [
     icon: uniswap,
     title: 'Uniswap',
     text: 'Ethereum',
+    link: 'https://app.uniswap.org/#/swap?inputCurrency=0xdac17f958d2ee523a2206206994597c13d831ec7&outputCurrency=0xbd9908b0cdd50386f92efcc8e1d71766c2782df0&chain=mainnet',
   },
   {
     icon: swapr,
     title: 'Swapr',
     text: 'GnosisChain',
+    link: 'https://swapr.eth.link/#/swap?inputCurrency=0xe91d153e0b41518a2ce8dd3d7944fa863463a97d&outputCurrency=0x97edc0e345fbbbd8460847fcfa3bc2a13bf8641f&chainId=100',
   },
 ];
 
@@ -166,17 +169,27 @@ function Join() {
       <UnorderedList>
         <ListItem>
           Keep eyes on #contibution in Discord to engage in tasks. Or, submit
-          your community suggestion task. (DKP3, DKP4)
+          your community suggestion task to earn DKP3, DKP4
         </ListItem>
         <ListItem>
-          Join Radio Party each saturday in Discord. (DKP3, DKP4)
+          Join Radio Party each saturday in Discord to earn DKP3, DKP4
         </ListItem>
         <ListItem>
-          Submit your proposal in forum.daosquare.io (DKP3,DKP4)
+          Submit your proposal in{' '}
+          <Link
+            href="https://forum.daosquare.io/"
+            target="_blank"
+            color="#5B93FF"
+          >
+            forum.daosquare.io
+          </Link>{' '}
+          to earn DKP3, DKP4
         </ListItem>
-        <ListItem>Stake your $RICE in DKP2 pool. (DKP2)</ListItem>
-        <ListItem>Donate WXDAI to our public good grant funds. (DKP1)</ListItem>
-        <ListItem>Other events. (DKP3, DKP4)</ListItem>
+        <ListItem>Stake your $RICE in DKP2 pool to earn DKP2</ListItem>
+        <ListItem>
+          Donate WXDAI to our public good grant funds to earn DKP1
+        </ListItem>
+        <ListItem>Other events to earn DKP3, DKP4</ListItem>
       </UnorderedList>
 
       <Heading as="h2" fontSize="24px" mt={10} mb={6}>
@@ -184,12 +197,21 @@ function Join() {
       </Heading>
       <UnorderedList>
         <ListItem>
-          Buy on Uniswap(mainnet), Swapr(GnosisChain), Gate.io, FT
+          Buy on Uniswap(mainnet), Swapr(GnosisChain), Gate.io
         </ListItem>
-        <ListItem>Join Radio Party each saturday in Discord.</ListItem>
-        <ListItem>Submit your proposal in forum.daosquare.io</ListItem>
+        <ListItem>Join Radio Party each saturday in Discord</ListItem>
+        <ListItem>
+          Submit your proposal in{' '}
+          <Link
+            href="https://forum.daosquare.io/"
+            target="_blank"
+            color="#5B93FF"
+          >
+            forum.daosquare.io
+          </Link>
+        </ListItem>
         <ListItem>Engage in tasks in community or guild</ListItem>
-        <ListItem>Other events.</ListItem>
+        <ListItem>Other events</ListItem>
       </UnorderedList>
 
       <Heading as="h2" fontSize="24px" mt={10} mb={6}>
@@ -204,7 +226,9 @@ function Join() {
             mr={{ base: 0, md: 6 }}
             mb={4}
           >
-            <IconCard {...d} />
+            <Link href="#">
+              <IconCard {...d} className="click-card" />
+            </Link>
           </Box>
         ))}
       </Flex>
@@ -221,7 +245,9 @@ function Join() {
             mr={{ base: 0, md: 6 }}
             mb={4}
           >
-            <IconCard {...d} />
+            <Link href={d.link} target="_blank">
+              <IconCard {...d} className="click-card" />
+            </Link>
           </Box>
         ))}
       </Flex>
