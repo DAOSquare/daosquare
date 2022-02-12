@@ -262,7 +262,7 @@ function Landscape() {
         const head = frame.contentDocument.getElementsByTagName('head')[0];
         var style = document.createElement('style');
         style.innerText =
-          'footer{display:none;}  .timeline-InformationCircle{display:none;}';
+          'footer .u-floatLeft {display:none;}  .timeline-InformationCircle{display:none;}';
         head.append(style);
       }
     }, 500);
@@ -596,7 +596,7 @@ function Landscape() {
                 screenName: 'DAOSquare',
               }}
               options={{
-                height: '440',
+                height: '460',
               }}
             />
           </BaseCard>
