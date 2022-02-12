@@ -58,7 +58,7 @@ function Summon() {
       </Text>
 
       <Text>
-        So，if you have any ideas or skills, feel free to join DAOSquare. Here
+        So, if you have any ideas or skills, feel free to join DAOSquare. Here
         you can find like-minded people to summon a DAO or join their DAO, get
         financial support (investment or grant) and then realise your dream
         (startups) with your teammates.
