@@ -265,7 +265,7 @@ function Landscape() {
           'footer{display:none;}  .timeline-InformationCircle{display:none;}';
         head.append(style);
       }
-    }, 200);
+    }, 500);
   }, []);
 
   useEffect(() => {
