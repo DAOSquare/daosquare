@@ -20,7 +20,7 @@ const menuData = [
     path: '/landscape',
   },
   {
-    name: 'Find friends',
+    name: 'Join us',
     path: '/join',
   },
   {
@@ -41,8 +41,8 @@ function Header() {
         pos="fixed"
         top={0}
         left={0}
-        background="rgba(230, 235, 255, 0.2)"
-        backdropFilter="blur(40px)"
+        background="rgba(230, 235, 255, 0.6)"
+        backdropFilter="blur(13px)"
         zIndex={999}
       >
         <Container
