@@ -8,10 +8,11 @@ class CalendarComponent extends React.Component {
       id: '#calendar',
       primaryColor: '#FF98D3',
       theme: 'glass',
-      border: '30px solid #FF98D3',
+      border: '30px solid #fff',
       weekdayType: 'long-upper',
       monthDisplayType: 'long',
-      headerBackgroundColor: '#FF98D3',
+      headerBackgroundColor: '#fff',
+      headerColor: '#323232',
 
       eventsData: [
         {

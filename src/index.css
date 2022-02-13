@@ -107,3 +107,6 @@ code {
   display: flex;
   align-items: center;
 }
+#calendar .color-calendar .calendar__arrow-inner {
+  background: #ff98d3;
+}

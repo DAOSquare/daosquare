@@ -94,7 +94,7 @@ function Summon() {
 
       <Box textAlign="center" mt={{ base: 8, md: 16, lg: 32 }}>
         <Link to="/join">
-          <Button>Find friends</Button>
+          <Button>Join us</Button>
         </Link>
       </Box>
 
