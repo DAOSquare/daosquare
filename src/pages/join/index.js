@@ -25,17 +25,17 @@ const nftData = [
     image: passport,
     title: 'PASSPORT',
     text: 'Basic membership',
-    info: 'Passport is passport to access DAOSquare, you can get all opportunities including investment, learnning,  events, community benefits.',
-
+    info: 'Passport is the passport to access DAOSquare, you can get all opportunities of investment, learning, events and community benefits.',
     energy: [
-      'Full access rights of Passport.',
-      'Be a Guild member to participate in EVERY guilds in DAOSquare community. Learn and earn.',
+      'Opportunities of investment',
+      'X to earn, including RadioParty, Growing rewards, etc',
+      'Community benefits',
     ],
     requirement: [
-      '100 $RICE staked in DKP2 pool',
-      '2 DKP1 to burn',
-      '10 DKP2 to burn',
-      '5 DKP3 to burn',
+      '10 $RICE staked in DKP2 pool',
+      '0 DKP1 to burn',
+      '1 DKP2 to burn',
+      '1 DKP3 to burn',
     ],
     visa: '1 month',
   },
@@ -124,22 +124,28 @@ function Join() {
     window.scrollTo(0, 0);
   }, []);
 
-  function addRiceToMetamask() {
-    initialize();
+  function addRiceToMetamask(nid) {
+    initialize(nid);
   }
 
-  const initialize = async () => {
+  const initialize = async nid => {
     const MetaMaskClientCheck = () => {
       //Now we check to see if MetaMask is installed
       if (typeof window.ethereum !== 'undefined') {
         console.log('MetaMask is installed!');
       } else {
-        alert('MetaMask isnt installed!');
+        alert("MetaMask isn't installed!");
       }
     };
     MetaMaskClientCheck();
     const networkID = await window.ethereum.request({ method: 'net_version' });
     console.log(networkID);
+    if (networkID !== nid) {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: nid }],
+      });
+    }
     let riceAddress = '0xbd9908b0cdd50386f92efcc8e1d71766c2782df0';
     if (networkID === '1') {
       riceAddress = '0xbd9908b0cdd50386f92efcc8e1d71766c2782df0';
@@ -158,7 +164,8 @@ function Join() {
             address: riceAddress,
             symbol: 'RICE',
             decimals: 18,
-            image: 'https://www.daosquare.io/mediakit/DAOSquareRICE-256.png',
+            image:
+              'https://raw.githubusercontent.com/DAOSquare/DesignResources/main/logo/DAOSquareLogo32.png',
           },
         },
       })
@@ -278,7 +285,7 @@ function Join() {
               {...d}
               className="click-card"
               onClick={() => {
-                addRiceToMetamask();
+                addRiceToMetamask(i === 0 ? '0x1' : '0x64');
               }}
             />
           </Box>
