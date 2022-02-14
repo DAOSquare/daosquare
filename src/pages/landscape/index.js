@@ -36,7 +36,7 @@ import matrix from '../../assets/images/matrix.svg';
 import whaledao from '../../assets/images/whaledao.svg';
 
 import daohaus from '../../assets/images/daohaus.svg';
-import ceramic from '../../assets/images/ceramic.svg';
+import ceramic from '../../assets/images/ceramic.png';
 import brightid from '../../assets/images/brightid.svg';
 import unlock from '../../assets/images/unlock.svg';
 import multis from '../../assets/images/multis.svg';
@@ -238,7 +238,7 @@ const portfolioData = [
   },
   {
     icon: ceramic,
-    title: 'Ceramic',
+    title: 'Secret now',
     text: 'Infrastructure',
     link: 'https://ceramic.network/',
   },
