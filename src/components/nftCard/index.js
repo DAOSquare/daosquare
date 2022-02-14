@@ -71,13 +71,14 @@ function NFTCard({ bg, image, title, text, info, energy, requirement, visa }) {
               Requirement
             </Box>
             <Box className="text">
-              <ul>
+              Coming soon
+              {/* <ul>
                 {requirement.map((d, i) => (
                   <li key={i} className="text">
                     {d}
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </Box>
           </Box>
 
@@ -90,9 +91,9 @@ function NFTCard({ bg, image, title, text, info, energy, requirement, visa }) {
         </Box>
 
         <Center pos="absolute" w="100%" h="102px" left={0} bottom={0}>
-          <Link href="https://dkp.land/" target="_blank">
-            <Button>Mint</Button>
-          </Link>
+          {/* <Link href="https://dkp.land/" target="_blank"> */}
+          <Button cussor="pointer">Mint</Button>
+          {/* </Link> */}
         </Center>
       </Box>
     </Box>

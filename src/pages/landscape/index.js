@@ -197,7 +197,7 @@ const productsData = [
     icon: nft4ever,
     title: 'NFT4ever',
     text: 'Equity Marketplace',
-    link: 'https://nft4ever.vercel.app',
+    link: '',
   },
 ];
 
