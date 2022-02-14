@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Image, Button, Center, Link } from '@chakra-ui/react';
+import { Box, Image, Button, Center } from '@chakra-ui/react';
 import './index.css';
 
 function NFTCard({ bg, image, title, text, info, energy, requirement, visa }) {
