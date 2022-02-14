@@ -1,14 +1,16 @@
-import React from 'react';
 import Calendar from 'color-calendar';
 import 'color-calendar/dist/css/theme-glass.css';
+import { useEffect } from 'react';
 
-class CalendarComponent extends React.Component {
-  componentDidMount() {
+function CalendarComponent({ isLargerThan1280 }) {
+  useEffect(() => {
+    let padding = isLargerThan1280 ? 110 : 30;
+
     new Calendar({
       id: '#calendar',
       primaryColor: '#FF98D3',
       theme: 'glass',
-      border: '30px solid #fff',
+      border: `${padding}px solid #fff`,
       weekdayType: 'long-upper',
       monthDisplayType: 'long',
       headerBackgroundColor: '#fff',
@@ -83,11 +85,9 @@ class CalendarComponent extends React.Component {
         // console.log('month change', currentDate, events);
       },
     });
-  }
+  }, [isLargerThan1280]);
 
-  render() {
-    return <div id="calendar"></div>;
-  }
+  return <div id="calendar"></div>;
 }
 
 export default CalendarComponent;

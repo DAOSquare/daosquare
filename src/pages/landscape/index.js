@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Box, Container, Flex, Text, Image, Link } from '@chakra-ui/react';
+import {
+  Box,
+  Container,
+  Flex,
+  Text,
+  Image,
+  Link,
+  useMediaQuery,
+} from '@chakra-ui/react';
 import {
   AreaChart,
   Area,
@@ -261,6 +269,8 @@ const portfolioData = [
 ];
 
 function Landscape() {
+  const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)');
+
   const [price, setPrice] = useState(0.8);
   console.log(price);
 
@@ -597,21 +607,29 @@ function Landscape() {
 
       <Flex wrap="wrap" justifyContent="space-between" mb={16}>
         <Box w={{ base: '100%', md: '49%' }} mb={6}>
-          <BaseCard p={0} h="456px" className="click-card">
+          <BaseCard
+            p={0}
+            h={isLargerThan1280 ? '610px' : '456px'}
+            className="click-card"
+          >
             <Timeline
               dataSource={{
                 sourceType: 'profile',
                 screenName: 'DAOSquare',
               }}
               options={{
-                height: '460',
+                height: isLargerThan1280 ? '614' : '460',
               }}
             />
           </BaseCard>
         </Box>
         <Box w={{ base: '100%', md: '49%' }} mb={6}>
-          <BaseCard p={0} h="456px" background="#FF98D3">
-            <Calendar />
+          <BaseCard
+            p={0}
+            h={isLargerThan1280 ? '610px' : '456px'}
+            className="click-card"
+          >
+            <Calendar isLargerThan1280={isLargerThan1280} />
           </BaseCard>
         </Box>
       </Flex>
