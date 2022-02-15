@@ -21,13 +21,13 @@
 }
 
 .wrapper-sm {
-  min-height: 440px;
-  margin-left: -10px;
-  margin-right: -10px;
+  min-height: 540px;
+  margin-left: -4px;
+  margin-right: -4px;
 }
 @media (min-width: 480px) {
   .wrapper-sm {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }

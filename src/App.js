@@ -42,7 +42,7 @@ function App() {
 
       <Footer
         position={
-          (location.pathname === '/' && window.innerHeight > 840) ||
+          (location.pathname === '/' && window.innerHeight > 668) ||
           location.pathname === '/guild'
             ? 'absolute'
             : 'static'
