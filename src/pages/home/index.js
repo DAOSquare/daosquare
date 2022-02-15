@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Box, Image, useMediaQuery } from '@chakra-ui/react';
 import daosquare from '../../assets/images/daosquare.svg';
 import '../../assets/animate.min.css';
@@ -5,6 +6,9 @@ import './index.css';
 
 function Home() {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
