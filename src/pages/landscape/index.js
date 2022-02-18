@@ -485,6 +485,7 @@ function Landscape() {
                   />
                 </AreaChart>
               </ResponsiveContainer>
+              
             </Box>
           </TitleCard>
         </Box>
