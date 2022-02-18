@@ -1,8 +1,20 @@
+import { useState, useEffect } from 'react';
+import {
+  Box,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogBody,
+  AlertDialogCloseButton,
+} from '@chakra-ui/react';
 import Calendar from 'color-calendar';
 import 'color-calendar/dist/css/theme-glass.css';
-import { useEffect } from 'react';
 
-function CalendarComponent({ isLargerThan1280 }) {
+function CalendarComponent({ isLargerThan1280, eventsData }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [curEvents, setCurEvents] = useState([]);
+
   useEffect(() => {
     let padding = isLargerThan1280 ? 110 : 30;
 
@@ -16,78 +28,77 @@ function CalendarComponent({ isLargerThan1280 }) {
       headerBackgroundColor: '#fff',
       headerColor: '#323232',
 
-      eventsData: [
-        {
-          id: 1,
-          name: '',
-          start: '2022-02-04T06:00:00',
-          end: '2022-02-04T20:30:00',
-        },
-        {
-          id: 2,
-          name: '',
-          start: '2022-02-05T06:00:00',
-          end: '2022-02-05T20:30:00',
-        },
-        {
-          id: 3,
-          name: '',
-          start: '2022-02-11T06:00:00',
-          end: '2022-02-11T20:30:00',
-        },
-        {
-          id: 4,
-          name: '',
-          start: '2022-02-12T06:00:00',
-          end: '2022-02-12T20:30:00',
-        },
-        {
-          id: 5,
-          name: '',
-          start: '2022-02-18T06:00:00',
-          end: '2022-02-18T20:30:00',
-        },
-        {
-          id: 6,
-          name: '',
-          start: '2022-02-19T06:00:00',
-          end: '2022-02-19T20:30:00',
-        },
-        {
-          id: 6,
-          name: '',
-          start: '2022-02-25T06:00:00',
-          end: '2022-02-25T20:30:00',
-        },
-        {
-          id: 7,
-          name: '',
-          start: '2022-02-26T10:00:00',
-          end: '2022-02-26T11:30:00',
-        },
-        {
-          id: 7,
-          name: '',
-          start: '2022-03-04T06:00:00',
-          end: '2022-03-04T20:30:00',
-        },
-        {
-          id: 8,
-          name: '',
-          start: '2022-02-05T10:00:00',
-          end: '2022-02-05T11:30:00',
-        },
-      ],
+      eventsData,
+      selectedDateClicked: (currentDate, events) => {
+        // console.log('selected date clicked', currentDate, events);
+        if (events.length > 0) {
+          setCurEvents(events);
+          setIsOpen(true);
+        }
+      },
       dateChanged: (currentDate, events) => {
         // console.log('date change', currentDate, events);
+        if (events.length > 0) {
+          setCurEvents(events);
+          setIsOpen(true);
+        }
       },
       monthChanged: (currentDate, events) => {
         // console.log('month change', currentDate, events);
       },
     });
-  }, [isLargerThan1280]);
+  }, [isLargerThan1280, eventsData]);
 
-  return <div id="calendar"></div>;
+  return (
+    <>
+      <Box id="calendar"></Box>
+      <AlertDialog
+        motionPreset="slideInBottom"
+        onClose={() => setIsOpen(false)}
+        isOpen={isOpen}
+        isCentered
+      >
+        <AlertDialogOverlay />
+
+        <AlertDialogContent>
+          <AlertDialogHeader>Events</AlertDialogHeader>
+          <AlertDialogCloseButton />
+          <AlertDialogBody>
+            <Box mb={8}>
+              {curEvents.length > 0 &&
+                curEvents.map((d, i) => (
+                  <Box key={i}>
+                    <Box mb={2} color="#5B93FF">
+                      {d.name}
+                    </Box>
+                    <Box mb={5} fontSize="14px">
+                      <Box>
+                        <Box display="inline-block" w="44px">
+                          Start:
+                        </Box>
+                        {new Date(d.start).toLocaleString('en-US', {
+                          dateStyle: 'full',
+                          timeStyle: 'medium',
+                        })}
+                      </Box>
+                      <Box>
+                        <Box display="inline-block" w="44px">
+                          End:
+                        </Box>
+                        {new Date(d.end).toLocaleString('en-US', {
+                          dateStyle: 'full',
+                          timeStyle: 'medium',
+                        })}
+                      </Box>
+                    </Box>
+                  </Box>
+                ))}
+            </Box>
+          </AlertDialogBody>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
+  );
 }
 
 export default CalendarComponent;
