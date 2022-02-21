@@ -271,8 +271,7 @@ const portfolioData = [
 function Landscape() {
   const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)');
 
-  const [price, setPrice] = useState(0.8);
-  console.log(price);
+  const [price, setPrice] = useState(0);
 
   const [chartData0, setChartData0] = useState([]);
   const [deworkData, setDeworkData] = useState({
@@ -300,10 +299,12 @@ function Landscape() {
   }, []);
 
   useEffect(() => {
-    fetch('max.json') //https://www.coingecko.com/price_charts/19084/usd/max.json
+    fetch(
+      'https://devil-admin-console.vercel.app/api/coingecko/marketchart/daosquare'
+    )
       .then(res => res.json())
       .then(res => {
-        let data = res.stats.reverse();
+        let data = res.prices.reverse();
         setPrice(data[0][1]);
         let graphData = data
           .slice(0, 7)
@@ -347,7 +348,6 @@ function Landscape() {
 
   async function getEventsData() {
     let response = await fetch(
-      // 'https://devil-admin-console.vercel.app/api/coingecko/daoquare',
       'https://devil-admin-console.vercel.app/api/sesh/daoquare'
     );
     const data = await response.json();
@@ -428,15 +428,19 @@ function Landscape() {
       </Container>
 
       <Flex wrap="wrap" justifyContent="space-between" mb={8}>
-        {data.map((d, i) => (
-          <Box
-            key={i}
-            w={{ base: '100%', md: '49%', lg: '23.5%' }}
-            mb={{ base: 4, lg: 0 }}
-          >
-            <IconCard {...d} />
-          </Box>
-        ))}
+        {data.map((d, i) => {
+          let item = { ...d };
+          item.title = i === 3 ? '$' + price.toFixed(2) : d.title;
+          return (
+            <Box
+              key={i}
+              w={{ base: '100%', md: '49%', lg: '23.5%' }}
+              mb={{ base: 4, lg: 0 }}
+            >
+              <IconCard {...item} />
+            </Box>
+          );
+        })}
       </Flex>
 
       <Flex wrap="wrap" justifyContent="space-between" mb={16}>
@@ -485,7 +489,6 @@ function Landscape() {
                   />
                 </AreaChart>
               </ResponsiveContainer>
-              
             </Box>
           </TitleCard>
         </Box>
