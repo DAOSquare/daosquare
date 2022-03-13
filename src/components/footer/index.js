@@ -13,7 +13,7 @@ function Footer(props) {
       alignItems="center"
       {...props}
     >
-      <Link href="https://discord.gg/musex" isExternal mx={4} w={5}>
+      <Link href="https://discord.com/invite/daosquare" isExternal mx={4} w={5}>
         <Image src={discord} w={5} />
       </Link>
       <Link href="https://twitter.com/DAOSquare" isExternal mx={4} w={5}>
