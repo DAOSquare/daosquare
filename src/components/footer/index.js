@@ -11,6 +11,7 @@ function Footer(props) {
       lineHeight="120px"
       justifyContent="center"
       alignItems="center"
+      zIndex={999}
       {...props}
     >
       <Link href="https://discord.com/invite/daosquare" isExternal mx={4} w={5}>
